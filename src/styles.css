@@ -1,0 +1,360 @@
+:root {
+  --headerFooterHeight: 5rem;
+  --colorPrimary: #3f1c56;
+  --field: #e6d4f1;
+  --fieldLighter: #ede1f5;
+  --lineWidth: 0.125rem;
+
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+  font-size: 100%;
+  color: var(--colorPrimary);
+}
+
+html,
+body,
+#root,
+.Game {
+  height: 100%;
+}
+
+/* Buttons */
+button {
+  appearance: none;
+  box-sizing: border-box;
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: visible;
+  direction: inherit;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  width: auto;
+  text-decoration: none;
+  user-select: none;
+  touch-action: manipulation;
+  cursor: pointer;
+  outline: none;
+}
+
+@keyframes ButtonAnimateUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(4rem, 5.5rem, 0);
+  }
+  25% {
+    opacity: 0.25;
+    transform: scale(0.5) translate3d(5rem, 6.5rem, 0);
+  }
+  75% {
+    transform: scale(1.125) translate3d(-1rem, -1rem, 0);
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes ButtonAnimateDown {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(0, 0, 0);
+  }
+  75% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(-1rem, -1rem, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translate3d(0, 0, 0);
+  }
+}
+
+.Button {
+  background: white;
+  border: 0.125rem solid var(--colorPrimary);
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--colorPrimary);
+}
+
+.Button:active {
+  box-shadow: none;
+  transform: scale(0.95) translateY(0.0625rem);
+}
+
+.Button[disabled] {
+  opacity: 0.4;
+  pointer-events: none;
+  cursor: not-allowed;
+}
+
+.Button--AnimateUp,
+.Button--AnimateDown {
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+.Button--AnimateUp {
+  animation-name: ButtonAnimateUp;
+  animation-duration: 0.75s;
+}
+
+.Button--AnimateDown {
+  animation-name: ButtonAnimateDown;
+  animation-duration: 0.75s;
+}
+
+.Button--Playa {
+  box-shadow: 0.375rem 0.375rem 0 rgba(0, 0, 0, 0.15);
+}
+
+.Button--Sub {
+  border-style: dashed;
+  background-clip: padding-box;
+}
+
+.Button--Playa,
+.Button--Sub {
+  display: inline-flex;
+  padding: 0;
+}
+
+.Button--StackTop {
+  position: relative;
+  left: -1rem;
+  top: 0.25rem;
+  z-index: 1;
+}
+
+.Button--StackBottom {
+  position: relative;
+  right: -1rem;
+  top: -0.25rem;
+}
+
+.Button--Primary {
+  background: var(--colorPrimary);
+  color: white;
+}
+
+.ButtonContent {
+  padding: 1.25rem;
+}
+
+.ButtonContent--Primary {
+  flex: 1;
+}
+
+.ButtonContent--Secondary {
+  background: #eee;
+}
+
+.Game {
+  display: grid;
+  grid-template-rows: var(--headerFooterHeight) 1fr;
+}
+
+.GameMain {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(
+    45deg,
+    var(--field) 25%,
+    var(--fieldLighter) 25%,
+    var(--fieldLighter) 50%,
+    var(--field) 50%,
+    var(--field) 75%,
+    var(--fieldLighter) 75%,
+    var(--fieldLighter) 100%
+  );
+  background-size: 12rem 12rem;
+}
+
+.GameLine,
+.GameLine::before,
+.GameLine::after {
+  display: block;
+  position: absolute;
+  border-width: var(--lineWidth);
+  border-color: var(--colorPrimary);
+}
+
+.GameLine--CenterCircle {
+  top: -6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-radius: 100%;
+  width: 11rem;
+  height: 11rem;
+}
+
+.GameLine--Box {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  min-width: 20rem;
+  height: 30%;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+}
+
+.GameLine--Box::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40%;
+  height: 36%;
+  border-top-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+}
+
+.GameLine--Box::after {
+  content: "";
+  position: absolute;
+  bottom: 75%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 100%;
+  background: var(--colorPrimary);
+}
+
+.GameChoose {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+
+.GameChooseHeader {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.GameChooseHeading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+  flex: 1;
+  padding-right: 1rem;
+}
+
+.GameChooseHeading__Secondary {
+  font-size: 1.125rem;
+  display: block;
+}
+
+.GameChoosePlayaz {
+  text-align: center;
+  padding: 1rem;
+}
+
+.GameChoosePlayaz > .Button {
+  margin: 0.75rem;
+}
+
+.GamePositions {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-areas:
+    "leftO . rightO"
+    ". mid ."
+    "leftD . rightD"
+    ". goalie .";
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.GamePosition {
+  display: grid;
+}
+
+.GamePosition--goalie {
+  grid-area: goalie;
+}
+
+.GamePosition--leftD {
+  grid-area: leftD;
+}
+
+.GamePosition--rightD {
+  grid-area: rightD;
+}
+
+.GamePosition--mid {
+  grid-area: mid;
+}
+
+.GamePosition--leftO {
+  grid-area: leftO;
+}
+
+.GamePosition--rightO {
+  grid-area: rightO;
+}
+
+.GameHeader {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  grid-template-areas:
+    "timer actions"
+    "progress progress";
+}
+
+.GameHeader__Timer {
+  grid-area: timer;
+  padding-left: 1rem;
+}
+
+.GameHeader__Actions {
+  grid-area: actions;
+  padding-right: 1rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.GameHeader__Progress {
+  grid-area: progress;
+}
+
+.Timer {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.TimerDigits {
+  flex-basis: 9rem;
+  box-sizing: border-box;
+  font-size: 2rem;
+  font-weight: 700;
+}
