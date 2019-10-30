@@ -1,9 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Game from "./Game";
-import "normalize.css";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Game from './Game'
+import 'normalize.css'
 
-import "./styles.css";
+import './styles.css'
 
 class App extends React.Component {
   render() {
@@ -13,61 +13,61 @@ class App extends React.Component {
         halfDuration={20}
         playaz={{
           paulaH: {
-            name: "Paula H.",
+            name: 'Paula H.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           celesteP: {
-            name: "Celeste P.",
+            name: 'Celeste P.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           adrienneH: {
-            name: "Adrienne H.",
+            name: 'Adrienne H.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           prudenceC: {
-            name: "Prudence C.",
+            name: 'Prudence C.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           natashaR: {
-            name: "Natasha R.",
+            name: 'Natasha R.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           annaM: {
-            name: "Anna M.",
+            name: 'Anna M.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           emilyS: {
-            name: "Emily S.",
+            name: 'Emily S.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           sarahG: {
-            name: "Sarah G.",
+            name: 'Sarah G.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           berniceA: {
-            name: "Bernice A.",
+            name: 'Bernice A.',
             seconds: 0,
             isPlaying: false,
             isSub: false
           },
           kimberlyF: {
-            name: "Kimberly F.",
+            name: 'Kimberly F.',
             seconds: 0,
             isPlaying: false,
             isSub: false
@@ -75,40 +75,40 @@ class App extends React.Component {
         }}
         positions={{
           goalie: {
-            name: "Goalkeeper",
+            name: 'Goalkeeper',
             current: undefined,
             sub: undefined
           },
           leftD: {
-            name: "Left defence",
+            name: 'Left defence',
             current: undefined,
             sub: undefined
           },
           rightD: {
-            name: "Right defence",
+            name: 'Right defence',
             current: undefined,
             sub: undefined
           },
           mid: {
-            name: "Midfield",
+            name: 'Midfield',
             current: undefined,
             sub: undefined
           },
           leftO: {
-            name: "Left offence",
+            name: 'Left offence',
             current: undefined,
             sub: undefined
           },
           rightO: {
-            name: "Right offence",
+            name: 'Right offence',
             current: undefined,
             sub: undefined
           }
         }}
       />
-    );
+    )
   }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
+const rootElement = document.getElementById('root')
+ReactDOM.render(<App />, rootElement)

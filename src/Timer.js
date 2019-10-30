@@ -1,6 +1,6 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { handleZero } from "./handleZero";
+import React from 'react'
+import PropTypes from 'prop-types'
+import { handleZero } from './handleZero'
 
 export default class Timer extends React.Component {
   static propTypes = {
@@ -8,25 +8,25 @@ export default class Timer extends React.Component {
     onEndHalf: PropTypes.func,
     onEndGame: PropTypes.func,
     disabled: PropTypes.bool
-  };
+  }
 
   static defaultProps = {
     disabled: false
-  };
+  }
 
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       time: 0,
       isOn: false,
       start: 0,
       firstHalfOver: false
-    };
+    }
   }
 
   componentWillUnmount() {
     if (this.timer) {
-      clearTimeout(this.timer);
+      clearTimeout(this.timer)
     }
   }
 
@@ -35,34 +35,34 @@ export default class Timer extends React.Component {
       isOn: true,
       time: this.state.time,
       start: Date.now() - this.state.time
-    });
+    })
     this.timer = setInterval(() => {
-      const time = Date.now() - this.state.start;
-      this.props.onUpdate(Math.round(time / 1000));
-      this.setState({ time });
-    }, 1000);
-  };
+      const time = Date.now() - this.state.start
+      this.props.onUpdate(Math.round(time / 1000))
+      this.setState({ time })
+    }, 1000)
+  }
   stopTimer = () => {
-    this.setState({ isOn: false });
-    clearInterval(this.timer);
-  };
+    this.setState({ isOn: false })
+    clearInterval(this.timer)
+  }
   resetTimer = () => {
-    this.stopTimer();
-    this.setState({ time: 0, isOn: false });
-  };
+    this.stopTimer()
+    this.setState({ time: 0, isOn: false })
+  }
   endHalf = () => {
-    if (window.confirm("End the half?")) {
-      this.resetTimer();
-      this.setState({ firstHalfOver: true });
-      this.props.onEndHalf();
+    if (window.confirm('End the half?')) {
+      this.resetTimer()
+      this.setState({ firstHalfOver: true })
+      this.props.onEndHalf()
     }
-  };
+  }
   endGame = () => {
-    if (window.confirm("End the game?")) {
-      this.resetTimer();
-      this.props.onEndGame();
+    if (window.confirm('End the game?')) {
+      this.resetTimer()
+      this.props.onEndGame()
     }
-  };
+  }
 
   renderGameControls() {
     if (this.state.firstHalfOver) {
@@ -74,7 +74,7 @@ export default class Timer extends React.Component {
         >
           End game
         </button>
-      );
+      )
     } else {
       return (
         <button
@@ -84,14 +84,14 @@ export default class Timer extends React.Component {
         >
           End half
         </button>
-      );
+      )
     }
   }
 
   render() {
-    const mins = Math.floor(Math.round(this.state.time / 1000) / 60);
-    const secs = ((this.state.time % 60000) / 1000).toFixed(0);
-    const { disabled } = this.props;
+    const mins = Math.floor(Math.round(this.state.time / 1000) / 60)
+    const secs = ((this.state.time % 60000) / 1000).toFixed(0)
+    const { disabled } = this.props
     return (
       <div className="Timer">
         <span className="TimerDigits">
@@ -121,6 +121,6 @@ export default class Timer extends React.Component {
           </span>
         )}
       </div>
-    );
+    )
   }
 }

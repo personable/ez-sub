@@ -1,12 +1,12 @@
 :root {
   --headerFooterHeight: 5rem;
-  --colorPrimary: #3f1c56;
-  --field: #e6d4f1;
-  --fieldLighter: #ede1f5;
+  --colorPrimary: #111;
+  --field: hsla(155, 80%, 75%, 1);
+  --fieldLighter: hsla(155, 80%, 80%, 1);
   --lineWidth: 0.125rem;
 
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Helvetica Neue", Arial, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Helvetica Neue', Arial, sans-serif;
   font-size: 100%;
   color: var(--colorPrimary);
 }
@@ -43,14 +43,17 @@ button {
     opacity: 0;
     transform: scale(0.5) translate3d(4rem, 5.5rem, 0);
   }
+
   25% {
     opacity: 0.25;
     transform: scale(0.5) translate3d(5rem, 6.5rem, 0);
   }
+
   75% {
     transform: scale(1.125) translate3d(-1rem, -1rem, 0);
     opacity: 0.75;
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translate3d(0, 0, 0);
@@ -62,10 +65,12 @@ button {
     opacity: 0;
     transform: scale(0.5) translate3d(0, 0, 0);
   }
+
   75% {
     opacity: 0;
     transform: scale(0.5) translate3d(-1rem, -1rem, 0);
   }
+
   100% {
     opacity: 1;
     transform: scale(1) translate3d(0, 0, 0);
@@ -206,7 +211,7 @@ button {
 }
 
 .GameLine--Box::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
@@ -219,9 +224,9 @@ button {
 }
 
 .GameLine--Box::after {
-  content: "";
+  content: '';
   position: absolute;
-  bottom: 75%;
+  bottom: 65%;
   left: 50%;
   transform: translateX(-50%);
   width: 0.25rem;
@@ -282,10 +287,10 @@ button {
   grid-template-rows: repeat(4, 1fr);
   grid-template-columns: repeat(3, 1fr);
   grid-template-areas:
-    "leftO . rightO"
-    ". mid ."
-    "leftD . rightD"
-    ". goalie .";
+    'leftO . rightO'
+    '. mid .'
+    'leftD . rightD'
+    '. goalie .';
   justify-items: center;
   align-items: center;
   justify-content: center;
@@ -324,8 +329,8 @@ button {
   grid-template-columns: 1fr auto;
   grid-template-rows: 1fr auto;
   grid-template-areas:
-    "timer actions"
-    "progress progress";
+    'timer actions'
+    'progress progress';
 }
 
 .GameHeader__Timer {
